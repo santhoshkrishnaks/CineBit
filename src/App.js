@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from'react';
 import './App.css';
 import LoginForm from './LoginForm/LoginForm.jsx';
@@ -15,6 +16,16 @@ function App() {
         </BrowserRouter>
     </div>
   );
-}
+=======
+import React from "react";
+import {BrowserRouter,Routes,Route} from 'react-router-dom';
 
+const App=()=>{
+  <BrowserRouter>
+  <Routes>
+  <Route path="/" element={<App/>}></Route>
+  </Routes>
+  </BrowserRouter>
+>>>>>>> 767c05e759119cee40880889caa75045310d4633
+}
 export default App;

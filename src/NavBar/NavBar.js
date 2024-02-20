@@ -50,6 +50,9 @@ const NavBar = () => {
     const handleHome=()=>{
         navigate("/Home");
     }
+    const handleSign=()=>{
+        navigate("/SignUp");
+    }
     const handleContact=()=>{
         navigate("/ContactUs");
     }
@@ -63,11 +66,10 @@ const NavBar = () => {
     <img src='../Images/LogoCB1.png' alt="LOGO" height="42px" width=""></img>
     <Tabs sx={{marginLeft:"auto",marginRight:"0px"}} textColor='inherit'>
     <Tab label="Home" onClick={handleHome}/>
-    <Tab label="Contact Us" onClick={handleContact}/>
     <Tab label="About US" onClick={handleAbout}/>
 
     </Tabs>
-    <Button sx={{color:"white",marginLeft:"auto"}} variant='contained' >Sign In</Button>
+    <Button sx={{color:"white",marginLeft:"auto"}} variant='contained' onClick={handleSign}>Sign In</Button>
     <Search>
             <SearchIconWrapper>
               <SearchIcon />

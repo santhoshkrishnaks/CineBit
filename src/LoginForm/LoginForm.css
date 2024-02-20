@@ -16,7 +16,7 @@
 }
 
 .wrapper {
-    width: 420px;
+    width: 490px;
     background: rgba(0, 0, 0, 0.7);
     border: 3px solid rgba(255, 255, 255, 0.2);
     color: #ffffff;
@@ -137,9 +137,4 @@
     font-size: 25px;
     margin-left: 70px;
     justify-content: space-between;
- }
- .error-message {
-    font-size: 14px;
-    margin-left: 25px;
-    color: rgb(228, 228, 228);
  }

@@ -1,10 +1,14 @@
 import React from 'react'
+import Footer from '../Footer/Footer'
+import NavBar from '../NavBar/NavBar'
 
 const ContactUs = () => {
   return (
     <div>
-    <div style={{backgroundColor:"blue"}}></div>
+    <NavBar/>
+    <Footer/>
     </div>
+
   )
 }
 

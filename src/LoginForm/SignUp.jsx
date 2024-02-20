@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaUser, FaLock } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
-
+import './LoginForm.css';
 const emailValidator = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -52,7 +52,7 @@ const SignUp = () => {
         if (formData.password !== formData.confirmPassword) {
             return setConfirmPasswordError('Passwords do not match.');
         }
-        Navigate('/') 
+        Navigate('/Sign') 
     };
 
     return (
@@ -89,7 +89,7 @@ const SignUp = () => {
 
                 <div className="register-link">
                     <p>
-                        Already have an account? <Link to="/">Login</Link>
+                        Already have an account? <Link to="/Sign">Login</Link>
                     </p>
                 </div>
             </form>

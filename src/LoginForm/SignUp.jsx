@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
-import { Link, useNavigate,useHistory } from 'react-router-dom';
+import { Link, useNavigate, } from 'react-router-dom';
 import './LoginForm.css';
+import { Email } from '@mui/icons-material';
 const SignUp = () => {
     const Navigate = useNavigate();
     const [fname,setFname]=useState("");
     const [lname,setLname]=useState("");
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
-    const [confirmPassword,setConfirmPassword]=useState("");
-    const data={name:fname+" "+lname,Email:email,Password:password};
+    const [confirmpassword,setConfirmPassword]=useState("");
+    console.log("Firstname--------->>>>",fname);
+    console.log("Lastname--------->>>>",lname);
+    console.log("Emailname--------->>>>",email);
+    console.log("Password--------->>>>",password);
+    console.log("ConfirmPassword--------->>>>",confirmpassword);
     const handleSubmit=()=>{
-        Navigate('/Login',{state:data}); 
+        Navigate('/Login'); 
     };
 
     return (
@@ -38,7 +43,7 @@ const SignUp = () => {
                 <input type = "submit" className='button' value= 'SignUp'></input>
                 <div className="register-link">
                     <p>
-                        Already have an account? <Link to="/Sign">Login</Link>
+                        Already have an account? <Link to="/Login">Login</Link>
                     </p>
                 </div>
             </form>

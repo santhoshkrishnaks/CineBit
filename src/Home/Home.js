@@ -4,13 +4,15 @@ import { Rating } from '@mui/material';
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 
-const Home = () => {
+const Home = (props) => {
   const containerRef = useRef(null);
-
   return (
     <div>
     <NavBar/>
     <section className="T-container" id="about">
+    <h1 className="W-title">Welcome {props.data}</h1>
+    <br/>
+    <br/>
       <h2 className="T-title" >Top Movies</h2>
       <br></br><br></br>
       <div className="T-content" ref={containerRef}>

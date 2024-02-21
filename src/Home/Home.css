@@ -16,6 +16,15 @@ body{
         max-height: 100vh;
       }
       
+      .W-title {
+        color: white;
+        font-size: 35px;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: 750;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        text-align: left;
+      }
       .T-title {
         color: white;
         font-size: 35px;
@@ -35,20 +44,6 @@ body{
         margin-bottom: 10px; 
       }
       
-      .scroll-button {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: none;
-        border: none;
-        font-size: 20px;
-        color: #9DB2BF;
-        cursor: pointer;
-      }
-      
-      .scroll-button:focus {
-        outline: none;
-      }
       
       .T-aboutItems {
         list-style: none;

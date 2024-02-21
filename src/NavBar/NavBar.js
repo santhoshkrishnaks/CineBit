@@ -1,5 +1,6 @@
 import { AppBar, Button, Tab, Tabs, Toolbar } from '@mui/material'
 import React from 'react'
+import { Link } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 import { styled, alpha } from '@mui/material/styles';
@@ -51,10 +52,7 @@ const NavBar = () => {
         navigate("/Home");
     }
     const handleSign=()=>{
-        navigate("/SignUp");
-    }
-    const handleContact=()=>{
-        navigate("/ContactUs");
+        navigate("/");
     }
     const handleAbout=()=>{
         navigate("/AboutUs");
@@ -63,7 +61,7 @@ const NavBar = () => {
     <React.Fragment>
     <AppBar sx={{background:"#081b27"}}>
     <Toolbar>
-    <img src='../Images/LogoCB1.png' alt="LOGO" height="42px" width=""></img>
+    <Link to="/Home"><img src='../Images/LogoCB1.png' alt="LOGO" height="42px" width=""></img></Link>
     <Tabs sx={{marginLeft:"auto",marginRight:"0px"}} textColor='inherit'>
     <Tab label="Home" onClick={handleHome}/>
     <Tab label="About US" onClick={handleAbout}/>

@@ -1,0 +1,21 @@
+
+  
+  .heading {
+    font-size: 15px;
+    color:grey;
+    cursor: pointer;
+   
+  }
+  .heading1{
+    font-size:12px;
+    color:black;
+  }
+  
+  .fa {
+    font-size: 25px;
+  }
+  
+  .checked {
+    color: orange;
+  }
+ 

@@ -10,7 +10,9 @@
 }
 
 body {
-  /* background: linear-gradient(#f5eaf0, #FED9ED, #E7BCDE, #BB9CC0); */
+  background-color: #081b27;
+  background-image: url('../public/Images/bg.jpg');
+  background-blend-mode: soft-light;
 
 }
 

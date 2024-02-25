@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+.p-headText {
+  color:white;
+  font-size: 7vh;
+  font-weight: bold;
+}
+.p-container{
+  margin-top: -8vw;
+  display: flex;
+  justify-content: space-between;
+  height: 100vh;
+  align-items: center;
+}
+
+.p-container img{
+  position: relative;
+  height: 50vh;
+  border-radius: 3px;
+  justify-content: center;
+}
+
+.card-img{
+  height: 50vh;
+  margin-top: 50px;
+  transition: .5s;
+  overflow:hidden;
+}
+.card-img:hover{
+    transform: scale(1.09);
+    cursor: pointer;
+}

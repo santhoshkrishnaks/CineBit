@@ -1,10 +1,11 @@
-import { AppBar, Button, Tab, Tabs, Toolbar } from '@mui/material'
-import React from 'react'
+import { AppBar, Button, Tab, Tabs, Toolbar,Menu,MenuItem, Avatar } from '@mui/material'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 import { styled, alpha } from '@mui/material/styles';
 import { Outlet, useNavigate } from 'react-router-dom';
+import Create from '../Context/LoginContext';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -48,36 +49,80 @@ const Search = styled('div')(({ theme }) => ({
 
 const NavBar = () => {
     const navigate=useNavigate();
+    const {login,setLogin}=useContext(Create);
+    const[val,setVal]=useState(0);
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [anchor, setAnchor] = useState(null);
     const handleHome=()=>{
+      setVal(0);
         navigate("/Home");
     }
     const handleSign=()=>{
-        navigate("/");
+        navigate("/SignUp");
     }
     const handleAbout=()=>{
-        navigate("/AboutUs");
+      setVal(2);
+      navigate("/AboutUs");
     }
+    const handleMovies = (event) => {
+      setAnchorEl(event.currentTarget);
+  }
+  const handlemenu=()=>{
+    setVal(1);
+    navigate("/List");
+  }
+  const handleClose = () => {
+      setAnchorEl(null);
+  }
+  const handlea=(event)=>{
+    setAnchor(event.currentTarget);
+  }
+  const handleab=()=>{
+    setLogin(false);
+    setAnchor(null);
+  }
   return (
     <React.Fragment>
-    <AppBar sx={{background:"#081b27"}}>
+    <AppBar sx={{background:"#000508"}}>
     <Toolbar>
     <Link to="/Home"><img src='../Images/LogoCB1.png' alt="LOGO" height="42px" width=""></img></Link>
-    <Tabs sx={{marginLeft:"auto",marginRight:"0px"}} textColor='inherit'>
-    <Tab label="Home" onClick={handleHome}/>
-    <Tab label="About US" onClick={handleAbout}/>
-
+    <Tabs value={val} sx={{marginLeft:"20vw",marginRight:"0px",'&button:hover':{fontColor:'#151426'}}} textColor=' #6D6D79'>
+    <Tab label="About US" value={2} onClick={handleAbout}/>
+    <Tab label="Home" value={0} onClick={handleHome} />
+    <Tab label="Movies" value={1} onClick={handleMovies}
+    aria-controls="movies-menu" aria-haspopup="true"/>
+    <Menu
+    id="movies-menu"
+    anchorEl={anchorEl}
+    keepMounted
+    open={Boolean(anchorEl)}
+    onClose={handleClose}
+    >
+    <MenuItem onClick={handlemenu}>Top 10 Movies</MenuItem>
+    <MenuItem onClick={handlemenu}>Most Popular Movies</MenuItem>
+    <MenuItem onClick={handlemenu}>Latest Releases</MenuItem>
+    </Menu>
     </Tabs>
-    <Button sx={{color:"white",marginLeft:"auto"}} variant='contained' onClick={handleSign}>Sign In</Button>
+    {login ?<Avatar sx={{marginLeft:"15vw",cursor:'pointer'}} onClick={handlea} />:
+    <Button sx={{color:"white",marginLeft:"auto"}} variant='contained' onClick={handleSign}>Sign In</Button>}
+    <Menu
+    id="movies-menu"
+    anchorEl={anchor}
+    keepMounted
+    open={Boolean(anchor)}
+    onClose={handleClose}
+    >
+    <MenuItem onClick={handleab}>LogOut</MenuItem>
+    </Menu>
     <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
+    <SearchIconWrapper>
+    <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-              placeholder="Search…"
+            placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
-          
+              />
+              </Search>
     </Toolbar>
     </AppBar>
     <Outlet/>

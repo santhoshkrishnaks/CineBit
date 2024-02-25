@@ -1,15 +1,26 @@
-import React from 'react'
-import NavBar from '../NavBar/NavBar'
+import React, { useContext, useEffect } from 'react'
 import Footer from '../Footer/Footer'
 import { FaFilm } from 'react-icons/fa';
 import "./Aboutus.css";
+import Loading from '../LoadingPage/Loading';
+import Create from '../Context/LoginContext';
 const Aboutus = () => {
+  const {load,setLoad}=useContext(Create);
+  useEffect(() => {
+    setLoad(true); // Simulate successful login
+    setTimeout(() => {
+      setLoad(false);
+    }, 500);
+  }, [])
+  
+ 
         return (
+          <div>
+          {load?<Loading/>:
             <div>
-            <NavBar/>
             <br/>
             <br/>
-            <div className="container">
+            <div className="container1">
               <FaFilm className="icon" />
               <h1 className="heading">About Us</h1>
               <p className="paragraph">Welcome to CineBite
@@ -31,6 +42,8 @@ const Aboutus = () => {
               Thank you for being a part of the CineBite community. Happy movie watching!</p>
             </div>
             <Footer/>
+            </div>
+          }
             </div>
         );
       }

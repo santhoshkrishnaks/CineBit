@@ -1,7 +1,7 @@
 
 #music-playlist-titles{
     padding: 4px 16px;
-    margin-left:84px;
+    margin-left:-9vw;
 }
 #most-popular{
     width: 70%;
@@ -26,7 +26,7 @@
  
     display: flex;
     flex-direction: column;
-    margin-left: 82px;
+    margin-left: 300px;
 }
 .most-popular-items {
      margin-right: 10%;
@@ -67,9 +67,8 @@
 }
 .form {
    margin-bottom: 5%;
-    margin-right:65%; 
-    width: 100px;
-    height: 120px;
+    margin-right:59%; 
+    height: 130px;
     font: size 25px;;
     
 }

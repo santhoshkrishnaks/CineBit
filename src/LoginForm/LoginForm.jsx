@@ -54,9 +54,16 @@ const LoginForm = () => {
       setBut(false);
     }
   };
+  const {load,setLoad}=useContext(Create);
+  useEffect(() => {
+    setLoad(true);
+    setTimeout(() => {
+      setLoad(false);
+    }, 500);
+  }, []) 
   return (
     <div>
-    {false?<Loading/>:
+    {load?<Loading/>:
     <div className='body'>
       <div className='wrapper'>
         <form>

@@ -1,28 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 .container1 {
-    margin-top: 50px;
-    width: 100vw;
-    height: 180vh;
-    margin: 0 auto;
-    padding: 40px;
-    text-align: center;
+    width: 100%;
+    padding: 2rem;
+    text-align: justify;
 }
-.heading {
-    font-size: 32px;
+
+#heading2 {
+    font-size: 2rem;
     font-weight: bold;
-    margin-bottom: 30px;
-    color: white;
+    margin-bottom: 1.5rem;
+    color: goldenrod;
+    text-align: center;
+    font-family: "Quicksand", sans-serif;
 }
 
 .paragraph {
-    font-size: 18px;
+    font-size: 1.2rem;
     line-height: 1.6;
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
     color: white;
-    padding: 30px;
+    font-family: "Quicksand", sans-serif;
 }
 
 .icon {
-    font-size: 50px;
+    font-size: 3rem;
     color: white;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
+    margin-left: 45vw;
 }

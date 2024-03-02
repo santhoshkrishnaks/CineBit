@@ -5,7 +5,9 @@
   position: relative;
   overflow: hidden;
 }
-
+.image{
+  cursor: pointer;
+}
 .slide {
   position: absolute;
   top: 0;
@@ -111,6 +113,5 @@ hr {
 }
 
 .button1 {
-  background-color: transparent;
-  transition: background-color 0.3s ease; 
+  cursor: pointer;
 }

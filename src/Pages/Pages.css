@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
 .dynamic-page-header {
   position: relative;
   overflow: hidden;
@@ -53,13 +55,23 @@
   background-size: cover;
   box-shadow: inset 0 1px 0 0 hsla(0, 0%, 100%, 0.2), 8px 8px 60px -10px rgba(0, 0, 0, 0.4);
 }
+.header-short-description {
+  margin-top: 10px;
+  margin-bottom: 0px;
+  font-size: 19px;
+  line-height: 31px;
+}
 .header-title {
   max-width: 70%;
-  margin-top: 0px;
+  margin-top: -10px;
+  color: white;
   margin-bottom: 0px;
   font-size: 60px;
   line-height: 60px;
   font-weight: 800;
+  font-family: "Quicksand", sans-serif;
+
+  
 }
 .info-wrapper.on-review-page {
   margin-top: 25px;
@@ -86,16 +98,13 @@ body{
 .butt:hover{
   cursor: pointer;
 }
-
-
 .header-info-item {
   margin-top: 6px;
 }
-
 .header-info-title {
   display: inline-block;
+  font-family: "Quicksand", sans-serif;
 }
-
 .header-info-title.bold {
   width: 86.8125px;
   margin-right: 10px;
@@ -123,13 +132,9 @@ body{
   margin-bottom: 0px;
   font-size: 13px;
 }
-
-
-
 .info-wrapper.inline-block {
   display: inline-block;
 }
-
 .info-block {
   display: inline-flex;
   margin-top: 3px;
@@ -137,7 +142,6 @@ body{
   float: none;
   line-height: 20px;
 }
-
 .info-block-icon {
   position: relative;
   top: -1px;
@@ -145,7 +149,6 @@ body{
   margin-right: 10px;
   float: none;
 }
-
 .info-block-icon.small {
   top: -2px;
   height: 16px;
@@ -166,46 +169,36 @@ body{
   display: inline-block;
   float: none;
 }
-
-
    body {
-     background-color: #020405;
-     font-family: Catamaran, sans-serif;
-     color: #333;
      font-size: 16px;
      line-height: 28px;
    }
-   
-   h1 {
-     margin-top: 20px;
-     margin-bottom: 10px;
-     color: #fff;
-     font-size: 38px;
-     line-height: 44px;
-     font-weight: 400;
+
+.titlep{
+  margin-top: -120px;
+   font-size: 2.8em;
+  color: goldenrod;
+  position: absolute; /* Use absolute positioning */
+  left: 20px;
+  font-family: "Quicksand", sans-serif;
+
    }
    
-   h2 {
-     margin-top: 20px;
-     margin-bottom: 20px;
-     color: #f1b722;
-     font-size: 28px;
-     line-height: 36px;
-     font-weight: 300;
-   }
-   
-   h3 {
+  .cast {
      margin-top: 20px;
      margin-bottom: 20px;
      color: #f1b722;
      font-size: 21px;
      line-height: 30px;
      font-weight: 700;
+     font-family: "Quicksand", sans-serif;
+
    }
    p {
      margin-bottom: 25px;
      align-items:justify;
-     font-family: Roboto, sans-serif;
+     font-family: "Quicksand", sans-serif;
+
    }
    
    a {

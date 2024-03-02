@@ -1,20 +1,25 @@
 
 #music-playlist-titles{
     padding: 4px 16px;
-    margin-left:-9vw;
+    color: goldenrod;
+    margin-left: 280px;
+    font-family: "Quicksand", sans-serif;
+
 }
 #most-popular{
     width: 70%;
-    color: yellow;
 }
 #most-popular>h2{
     margin: 0;
     margin-left: 4px;
 }
+.titlel{
+    font-family: "Quicksand", sans-serif;
+}
 #most-popular >p{
     margin: 0;
     margin-bottom: 4px;
-    color: grey;
+    color: white;
 }
 
 #primary-second-section{
@@ -53,6 +58,7 @@
     display: flex;
     align-items: center;
     width: 100%;
+    margin-left: 10px;
 }
 .music-icon-section img, p , i{
     padding: 2px 4px;
@@ -69,7 +75,9 @@
    margin-bottom: 5%;
     margin-right:59%; 
     height: 130px;
-    font: size 25px;;
+    font: size 25px;
+    font-family: "Quicksand", sans-serif;
+
     
 }
 .form1{
@@ -80,6 +88,9 @@
 }
 #run{
     text-decoration: underline;
+    color: goldenrod;
+    margin-top: 20px;
+    font-family: "Quicksand", sans-serif;
 }
 
 

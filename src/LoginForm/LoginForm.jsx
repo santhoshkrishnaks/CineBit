@@ -7,24 +7,26 @@ import { Link, useNavigate } from 'react-router-dom';
 import Create from '../Context/LoginContext';
 import axios from 'axios';
 import Loading from '../LoadingPage/Loading';
-import { CircularProgress } from '@mui/material';
+import { Alert, CircularProgress } from '@mui/material';
 
 const LoginForm = () => {
   const navigate=useNavigate();
   const {login,setLogin}=useContext(Create);
+  const [show,setShow]=useState(true);
   const [user,setUser]=useState(false);
   const [email,setEmail]=useState();
   const [emailError,setEmailError]=useState('');
   const [password,setPassword]=useState('');
   const [passwordError,setPasswordError]=useState();
   const [but,setBut]=useState(false);
+  const [open,setOpen]=useState(false);
   const handleClick = async (e) => {
     e.preventDefault();
-    setBut(true);
     try {
-      const response = await axios.get("https://mocki.io/v1/29e166fd-d1fb-4a71-92e0-fa7a5ffdb53d");
+      setBut(true);
+      const response = await axios.get("https://apigenerator.dronahq.com/api/y3qhsCe8/data");
       let userFound = false;
-      for (let i = 0; i < response.data.length; i++) {
+      for (let i = 1; i < response.data.length; i++) {
         const e = response.data[i].username;
         const p = response.data[i].password;
         if (email === e) {
@@ -33,25 +35,27 @@ const LoginForm = () => {
           break;
           }
           else{
+            setOpen(true);
             setPasswordError('Password Incorrect');
           }
         }
         else{
+          setOpen(true);
           setEmailError('Email Incorrect');
-          setPasswordError('Password Incorrect');
         }
       }
-      setBut(false);
       setUser(userFound);
-    } catch (error) {
+    } 
+    catch (error) {
       console.log(error);
     }
-    if(user){
-      navigate("/Home");
-      setLogin(true);
-    }
-    else{
-      setBut(false);
+    finally{
+      if(user){
+        navigate("/Home");
+        setLogin(true);
+        setBut(false);
+        localStorage.setItem("Email",email);
+      }
     }
   };
   const {load,setLoad}=useContext(Create);
@@ -61,6 +65,16 @@ const LoginForm = () => {
       setLoad(false);
     }, 500);
   }, []) 
+  useEffect(() => {
+    setTimeout(() => {
+      setBut(false);
+    }, 2000);
+  }, [but]);
+  useEffect(()=>{
+    setTimeout(()=>{
+      setOpen(false);
+    },2000)
+  },[open]);
   return (
     <div>
     {load?<Loading/>:
@@ -69,19 +83,19 @@ const LoginForm = () => {
         <form>
           <h1>Login</h1>
           <div className="input-box">
-            <input type="text" placeholder="Email" value={email}required onChange={(e)=>{setEmail(e.target.value)}}/>
+            <input type="text" placeholder="Email" value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
             <FaUser className='icon' />
-            {emailError && <p className="error-message">{emailError}</p>}
-          </div>
-          <div className="input-box">
-            <input type="password" placeholder="Password" required value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
-            <FaLock className='icon'/>
-            {passwordError && <p className="error-message">{passwordError}</p>}
             </div>
-
+            {open&&emailError && <Alert severity="error" sx={{marginTop:"-27px"}}>User Doesnot Exist</Alert>}
+          <div className="input-box">
+            <input type={show?"password":"text"} placeholder="Password" value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
+            <FaLock className='icon' style={{cursor:"pointer"}} onClick={()=>setShow(!show)}/>                
+            </div>
+            {open&&passwordError && <Alert severity="error" sx={{marginTop:"-27px"}}>Invalid Password</Alert>}
+<br/>
           <div className="remember-forgot">
             <label><input type="checkbox" />Remember me</label>
-            <a href="#">Forgot password?</a>
+            <a href="/Forgot">Forgot password?</a>
           </div>
           <hr className="horizontal-line" />
           <div className="social-login">
@@ -89,10 +103,10 @@ const LoginForm = () => {
             <FcGoogle className='social-icon1' />
             <FaFacebook className='social-icon2' />
           </div>
-          {but?<CircularProgress color="primary" size={20}/>:<input type="submit" className='button' onClick={handleClick} value='Login' />}
+          {but?<center><CircularProgress color="primary" size={20}/></center>:<input type="submit" className='button' onClick={handleClick} value='Login' />}
 
           <div className="register-link">
-            <p>Don't have an account? <Link to="/">Signup</Link></p>
+            <p style={{fontFamily:'font-family: "Quicksand", sans-serif'}}>Don't have an account? <Link to="/">Signup</Link></p>
           </div>
         </form>
       </div>

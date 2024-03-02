@@ -6,10 +6,32 @@ import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import { Avatar, Grid, Rating } from '@mui/material';
 import Loading from '../LoadingPage/Loading';
 import Create from '../Context/LoginContext';
-import Slider from '../Slider/Slider';
+import Slider1 from '../Slider/Slider1';
 import StarIcon from '@mui/icons-material/Star';
+import UserReview from '../UserReview/UserReview';
+import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 const Pages = () => {
+  const location=useLocation();
+  const popular=[{id:9,src:"./Images/Avatar.jpg"},{id:10,src:'./Images/Avenger.jpg'},{id:2,src:'./Images/martian.jpg'},{id:1,src:'./Images/Ms.jpg'},{id:3,src:'./Images/Asuran.jpg'},{id:8,src:'./Images/Transform.jpg'},{id:11,src:'./Images/jaibhim.jpg'},{id:23,src:'./Images/rudra.jpg'},{id:33,src:'./Images/thegodfather.jpg'},{id:39,src:'./Images/i.jpg'},{id:31,src:'./Images/thedarkknight.jpg'},{id:21,src:'./Images/drishyam.jpg'},{id:26,src:'../Images/sooraripottru.jpg'},{id:15,src:'./Images/V.jpg'}];
+
+  const id=location.state;
+  const [movieData, setMovieData] = useState(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`https://apigenerator.dronahq.com/api/c2O11mJ3/data/${id}`);
+        const data = response.data;
+        setMovieData(data);
+        console.log("================",data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+  
+    fetchData();
+  }, [id]);
   const {load,setLoad}=useContext(Create);
   useEffect(() => {
     setLoad(true); // Simulate successful login
@@ -27,17 +49,19 @@ const Pages = () => {
       setOpen(false);
     }
   }
+  if (!movieData || load) {
+    return <Loading />;
+  }
+  console.log("ertyuioijhgfdxcvbhnjk",movieData);
   return (
-    <div>
-    {load?<Loading/>:
     <div>
     <div className="dynamic-page-header">
     <div className="dynamic-header-overlay">
     <div className="container w-container">
     <div className="header-content-block">
-    <div className="header-thumbnail-image" style={{backgroundImage:`url('../Images/martian.jpg')`}}>
+    <div className="header-thumbnail-image" style={{backgroundImage:`url(${movieData.poster})`}}>
     </div>
-    <h1 className="header-title">The Martian</h1>
+    <h1 className="header-title">{movieData.name}</h1>
     <div className="info-wrapper on-review-page">
     <div className="info-block mobile-full">
     <Rating name="read-only" precision={0.5}   emptyIcon={<StarIcon style={{opacity:"0.72",color:"grey" }} fontSize="inherit" />} value={rating}  readOnly />
@@ -45,7 +69,7 @@ const Pages = () => {
     <button className="info-block butt" onClick={()=>setOpen(true)}><center><StarOutlineIcon/></center>Rate</button>
     <div className="info-block">
     <img src="https://assets.website-files.com/59f5ab35fccfea0001f70443/5a0973aee1339f0001a7cebe_tag.svg" alt="" className="info-block-icon"/>
-    <a href="/category/science-fiction" className="info-title-link">Science-Fiction</a>
+    <a href="/category/science-fiction" className="info-title-link">{movieData.genre}</a>
     </div>
     <div className="info-block">
     <img src="https://assets.website-files.com/59f5ab35fccfea0001f70443/5a0973abd092d00001df9c0e_clock.svg" alt="" className="info-block-icon"/>
@@ -70,16 +94,17 @@ const Pages = () => {
     </Dialog>
     </div>
     </div>
-    <p className="header-short-description" style={{color:'white'}}></p>
+    <p className="header-short-description" style={{color:'white'}}>{movieData.description}
+    </p>
     <div className="header-info-block" style={{color:'white'}}>
     <div className="header-info-item">
     <div className="header-info-title bold">Duration:</div>
-    <div className="header-info-title">2h 21m
+    <div className="header-info-title">{movieData.duration}
     </div>
     </div>
     <div className="header-info-item">
     <div className="header-info-title bold">Director:</div>
-    <div className="header-info-title">Redley Scott
+    <div className="header-info-title">{movieData.director}
     </div>
     </div>
           </div>
@@ -88,57 +113,54 @@ const Pages = () => {
       </div>
       </div>
       <div >
-      <h2><u>Official Trailer</u></h2>
-      <iframe width="800" height="450" src="https://www.youtube.com/embed/ej3ioOneTy8?si=gb-eksdqFsH7BsGi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <h2 className='titlep'>Official Trailer</h2>
+      <center><iframe width="800" height="450" src={movieData.src} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
 
       </div>
-    <h2><u>TOP CAST</u></h2>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+    <h2 className='titlep'>TOP CAST</h2>
     <div style={{maxWidth:"80vw",marginLeft:"auto"}}>
     <Grid container spacing={10}  columns={{sm:12 ,xs:12 ,md:12}}>
     <Grid item sm={4} md={6} xs={6} style={{alignItems:'center',display:'flex',gap:'40px'}}>
-    <Avatar sx={{height:"80px",width:"80px"}}></Avatar>
-    <h3>Jessica Chastain
+    <Avatar sx={{height:"60px",width:"60px"}}></Avatar>
+    <h3 className="cast">{movieData.c1}
     </h3>
     </Grid>
     <Grid item sm={4} md={6} xs={6} style={{alignItems:'center',display:'flex',gap:'40px'}}>
-    <Avatar sx={{height:"80px",width:"80px"}}></Avatar>
-    <h3>Matt Damon
+    <Avatar sx={{height:"60px",width:"60px"}}></Avatar>
+    <h3 className="cast">{movieData.c2}
     </h3>
     </Grid>
     <Grid item sm={4} md={6} xs={6} style={{alignItems:'center',display:'flex',gap:'40px'}}>
-    <Avatar sx={{height:"80px",width:"80px"}}></Avatar>
-    <h3>Jeff Daniels
+    <Avatar sx={{height:"60px",width:"60px"}}></Avatar>
+    <h3 className="cast">{movieData.c3}
     </h3>
     </Grid>
     <Grid item sm={4} md={6} xs={6} style={{alignItems:'center',display:'flex',gap:'40px'}}>
-    <Avatar sx={{height:"80px",width:"80px"}}></Avatar>
-    <h3>Katey Mara
+    <Avatar sx={{height:"60px",width:"60px"}}></Avatar>
+    <h3 className="cast">{movieData.c4}
     </h3>
     </Grid>
     <Grid item sm={4} md={6} xs={6} style={{alignItems:'center',display:'flex',gap:'40px'}}>
-    <Avatar sx={{height:"80px",width:"80px"}}></Avatar>
-    <h3>Kristen Wig
+    <Avatar sx={{height:"60px",width:"60px"}}></Avatar>
+    <h3 className="cast">{movieData.c5}
     </h3>
     </Grid>
     <Grid item sm={4} md={6} xs={6} style={{alignItems:'center',display:'flex',gap:'40px'}}>
-    <Avatar sx={{height:"80px",width:"80px"}}></Avatar>
-    <h3>Sebastian Stan
-    </h3>
-    </Grid>
-    <Grid item sm={4} md={6} xs={6} style={{alignItems:'center',display:'flex',gap:'40px'}}>
-    <Avatar sx={{height:"80px",width:"80px"}}></Avatar>
-    <h3>Sean Bean
+    <Avatar sx={{height:"60px",width:"60px"}}></Avatar>
+    <h3 className="cast">{movieData.c6}
     </h3>
     </Grid>
     </Grid>
     </div>
-    <br/>
-    <br/>
-    <br/>
-    <Slider data="More Like This"/>
+    <UserReview r1={movieData.r1} r2={movieData.r2} r3={movieData.r3} r4={movieData.r4} />
+    <Slider1 data="More Like This" arr={popular}/>
     <Footer/>
-    </div>
-  }
     </div>
   )
 }

@@ -1,18 +1,21 @@
 
-  
   .heading {
     font-size: 15px;
-    color:grey;
     cursor: pointer;
+    font-family: "Quicksand", sans-serif;
+
    
   }
   .heading1{
     font-size:12px;
-    color:black;
+    font-family: "Quicksand", sans-serif;
+
   }
   
   .fa {
     font-size: 25px;
+    font-family: "Quicksand", sans-serif;
+
   }
   
   .checked {

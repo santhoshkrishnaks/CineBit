@@ -2,6 +2,8 @@ import React,{useState} from 'react';
 import "./Star.css"; 
 import {Dialog,DialogActions,DialogContent,DialogTitle} from '@mui/material';
 import Rating from '@mui/material/Rating';
+import StarOutlineIcon from '@mui/icons-material/StarOutline';
+import StarIcon from '@mui/icons-material/Star';
 
 
 
@@ -17,12 +19,10 @@ const Star = () => {
   return (
     <div>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-      <h3 className='heading' onClick={handletitle}>Rating</h3>
-      <span className="fa fa-star checked"></span>
-      <span className="fa fa-star checked"></span>
-      <span className="fa fa-star checked"></span>
-      <span className="fa fa-star checked"></span>
-      <span className="fa fa-star"></span>
+      <button style={{display:"inline-flex",marginTop:"20px",backgroundColor:"transparent", border:"none", cursor:'pointer',alignItems:'center'}} onClick={()=>setOpen(true)}><StarOutlineIcon/><span>Rate</span></button>
+      <br/>
+      <Rating name="read-only" precision={0.5}   emptyIcon={<StarIcon style={{opacity:"0.72",color:"grey" }} fontSize="inherit" />} value={3.5}  readOnly />
+
       <Dialog open={open} fullWidth
      onClose={()=>setOpen(false)}>
     <DialogTitle sx={{justifyContent:'center',display:"flex",fontSize:"20px"}}>Rate This Movie</DialogTitle>

@@ -4,10 +4,11 @@ import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { useNavigate } from 'react-router-dom';
 const Slider = (props) => {
+  const navigate=useNavigate();
   return (
     <div >
           <div className='p-headText'>
-            <h2>{props.data}</h2>
+            <h2 className='titles'>{props.data}</h2>
           </div>
         <div className='p-container'> 
         <Splide
@@ -19,55 +20,16 @@ const Slider = (props) => {
             arrows: true,
           }}
         >
-          <SplideSlide>
-
+        {props.arr.map((values,index)=>(
+          <SplideSlide key={index}>
            <div className='card-img'>
-            <img src='./Images/Avatar.jpg' alt='1' /> 
+            <img src={values.src} alt='1' onClick={()=>{
+              navigate("/Page",{state:values.id})
+              window.location.reload(false);
+            }} /> 
           </div>
-          </SplideSlide>
-          <SplideSlide>
-
-           <div className='card-img'>
-            <img src='./Images/Avenger.jpg' alt='2' /> 
-          </div>
-          </SplideSlide>
-          <SplideSlide>
-
-           <div className='card-img'>
-            <img src='./Images/jaibhim.jpg' alt='loreal_brand'/> 
-          </div>
-          </SplideSlide>
-          <SplideSlide>
-
-           <div className='card-img'>
-            <img src='./Images/intersellar.jpg' alt='loreal_brand' /> 
-          </div>
-          </SplideSlide>
-          <SplideSlide>
-
-           <div className='card-img'>
-            <img src='./Images/Tangled.jpg'alt='loreal_brand' /> 
-          </div>
-          </SplideSlide>
-          <SplideSlide>
-
-           <div className='card-img'>
-            <img src='./Images/ToyStroy.jpg'alt='loreal_brand'/> 
-            </div>
-          </SplideSlide>
-          <SplideSlide>
-
-            <div className='card-img'>
-            <img src='./Images/V.jpg'alt='loreal_brand' /> 
-          </div>
-          </SplideSlide>
-          <SplideSlide>
-
-          <div className='card-img'>
-            <img src='./Images/Geostrom.jpg'alt='loreal_brand' /> 
-              </div>
-          </SplideSlide>
-          
+          </SplideSlide>))
+        }
             </Splide>
         </div>
     </div>

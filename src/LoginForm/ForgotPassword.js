@@ -21,7 +21,7 @@ const ForgotPassword = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("https://apigenerator.dronahq.com/api/y3qhsCe8/data");
+                const response = await axios.get("https://retoolapi.dev/Nxb05R/data");
                 if (response.data && response.data.length > 0) {
                     setUserList(response.data);
                 }
@@ -59,7 +59,7 @@ const ForgotPassword = () => {
                 const user = userList.find(task => task.username === email);
                 console.log(user);
                 if (user) {
-                    await axios.patch(`https://apigenerator.dronahq.com/api/y3qhsCe8/data/${user.id}`, { password: password });
+                    await axios.patch(`https://retoolapi.dev/Nxb05R/data/${user.id}`, { password: password });
                     navigate("/Login");
                 } else {
                     setOpen(true);

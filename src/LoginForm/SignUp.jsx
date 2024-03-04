@@ -1,10 +1,10 @@
 import React, { useState,useEffect, useContext } from 'react';
 import { Link, useNavigate, } from 'react-router-dom';
 import './LoginForm.css';
-import { Alert, AlertTitle, CircularProgress } from '@mui/material';
+import { Alert, CircularProgress } from '@mui/material';
 import Create from '../Context/LoginContext';
 import Loading from '../LoadingPage/Loading';
-import { FaLock, FaMailBulk, FaUber, FaUser} from 'react-icons/fa';
+import { FaLock, FaMailBulk, FaUser} from 'react-icons/fa';
 import axios from 'axios';
 const SignUp = () => {
     const Navigate = useNavigate();
@@ -58,13 +58,13 @@ const SignUp = () => {
         }
         else{
             try{
-                    axios.post("https://apigenerator.dronahq.com/api/y3qhsCe8/data",{name:form.fname+form.lname,username:form.email,password:form.password});
+                    axios.post("https://retoolapi.dev/Nxb05R/data",{name:form.fname+form.lname,username:form.email,password:form.password});
+                    Navigate("/Login");
                 }
                 catch(error){
                     console.log(error);
                 }
                 finally{
-                Navigate("/Login");
                 }
 
         }
@@ -131,5 +131,4 @@ const SignUp = () => {
         </div>
     );
 };
-
 export default SignUp;

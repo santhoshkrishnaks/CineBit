@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Slider.css';
 import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { useNavigate } from 'react-router-dom';
 const Slider = (props) => {
+  const len= window.innerWidth;
+  const [page,setPage]=useState(5);
+  useEffect(() => {
+    if(len<=800){
+      setPage(3);
+    }
+    else if(len<=1000){
+      setPage(4);
+    }
+  }, [len]);
   const navigate=useNavigate();
   return (
     <div >
@@ -14,7 +24,8 @@ const Slider = (props) => {
         <Splide
           options={{
             type: 'slide',
-            perPage: 5,
+            perPage:page
+            ,
             perMove: 1,
             pagination: false,
             arrows: true,

@@ -11,8 +11,13 @@ import {
   Autocomplete,
   TextField,
   InputAdornment,
+  Box,
+  IconButton,
+  Typography,
 } from "@mui/material";
+import MenuIcon from '@mui/icons-material/Menu';
 import React, { useContext, useEffect, useState } from "react";
+import './Nav.css'
 import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import { Outlet, useNavigate } from "react-router-dom";
@@ -37,7 +42,7 @@ function FreeSolo() {
 
   const navigate=useNavigate();
   return (
-    <Stack spacing={2} sx={{ width: 300,marginLeft:"12px",marginRight:"-12px" }}>
+    <Stack spacing={2} sx={{ width: 150,marginLeft:"12px",marginRight:"-12px" }}>
       <Autocomplete
         freeSolo
         id="free-solo-2-demo"
@@ -73,6 +78,15 @@ function FreeSolo() {
 }
 let top100Films = [];
 const NavBar = () => {
+  const pages = ['Home','Movies', 'About Us'];
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
   const latest = [
     { id:35,name: "12th Fail", src: "./Images/12thfail.jpg" },
     { id:25,name: "Hi Nanna", src: "./Images/hinanna.jpg" },
@@ -119,7 +133,7 @@ const NavBar = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://apigenerator.dronahq.com/api/c2O11mJ3/data");
+        const response = await axios.get("https://apigenerator.dronahq.com/api/AgmE4vf7/data");
         top100Films = response.data;
         console.log(">>>>>>>>>>>>>>>>", top100Films);
       } catch (error) {
@@ -183,18 +197,63 @@ const NavBar = () => {
         <Toolbar>
           <Link to="/Home">
             <img
+            className="img"
               src="../Images/LogoCB1.png"
               alt="LOGO"
               height="42px"
               width=""
             ></img>
           </Link>
+          <Box
+          sx={{
+            flexGrow: 1,
+            display: { xs: 'flex', md: 'none' },
+            '@media (min-width: 1000px)': { display: 'none' },
+          }}
+        >
+          <IconButton
+            size="large"
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={handleOpenNavMenu}
+            color="inherit"
+          >
+            <MenuIcon />
+          </IconButton>
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorElNav}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+            open={Boolean(anchorElNav)}
+            onClose={handleCloseNavMenu}
+            sx={{
+              display: { xs: 'block', md: 'none' },
+            }}
+          >
+          <MenuItem onClick={handleHome}>Home</MenuItem>
+          <MenuItem onClick={handleAbout}>About Us</MenuItem>
+          <MenuItem onClick={handlemenu}>Top 10 Movies</MenuItem>
+          <MenuItem onClick={handlemenu1}>Most Popular Movies</MenuItem>
+          <MenuItem onClick={handlemenu2}>Latest Releases</MenuItem>
+          </Menu>
+        </Box>
           <Tabs
             value={val}
+            className="tab"
             sx={{
               marginLeft: "20vw",
               marginRight: "0px",
               "&button:hover": { fontColor: "#151426" },
+              '@media (max-width: 1000px)': { display: 'none' },
             }}
             textColor=" #6D6D79"
           >
@@ -221,12 +280,13 @@ const NavBar = () => {
           </Tabs>
           {login ? (
             <Avatar
-              sx={{ marginLeft: "15vw", cursor: "pointer" }}
+              sx={{ marginLeft: "15vw", cursor: "pointer" ,
+              '@media (max-width: 600px)': {  },}}
               onClick={handlea}
             />
           ) : (
             <Button
-              sx={{ color: "white", marginLeft: "auto" }}
+              sx={{ color: "white", marginLeft: "auto",'@media (max-width: 600px)': {display:"none"}}}
               variant="contained"
               onClick={handleSign}
             >

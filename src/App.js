@@ -10,19 +10,18 @@ import Pages from './Pages/Pages.js';
 import Create from './Context/LoginContext.js';
 import NavBar from './NavBar/NavBar.js';
 import List from './List/List.js';
+import Sample from './Sample/Sample.js';
 import ForgotPassword from './LoginForm/ForgotPassword.js';
 
 function App() {
-  const [semail,setsemail]=useState();
-  const [sname,setsname]=useState();
-  const [slast,setslast]=useState();
   const [login,setLogin]=useState(false);
   const [load,setLoad]=useState(false);
   return (
     <div>
-    <Create.Provider value={{semail,setsemail,sname,setsname,slast,setslast,login,setLogin,load,setLoad}}>
-      <BrowserRouter>
-      <Routes>
+    <Create.Provider value={{login,setLogin,load,setLoad}}>
+    <BrowserRouter>
+    <Routes>
+    <Route path='/L' element={<Sample/>}/>
       <Route path='/SignUp' element={<SignUp/>}/>
       <Route path='/Login' element={<LoginForm/>}/>
       <Route path='/Forgot' element={<ForgotPassword/>}/>

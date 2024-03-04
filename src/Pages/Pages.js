@@ -21,7 +21,7 @@ const Pages = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://apigenerator.dronahq.com/api/c2O11mJ3/data/${id}`);
+        const response = await axios.get(`https://apigenerator.dronahq.com/api/AgmE4vf7/data/${id}`);
         const data = response.data;
         setMovieData(data);
         console.log("================",data);
@@ -114,7 +114,7 @@ const Pages = () => {
       </div>
       <div >
       <h2 className='titlep'>Official Trailer</h2>
-      <center><iframe width="800" height="450" src={movieData.src} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
+      <center><iframe width="55%" height="450" src={movieData.src} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
 
       </div>
       <br/>
@@ -124,7 +124,7 @@ const Pages = () => {
       <br/>
       <br/>
     <h2 className='titlep'>TOP CAST</h2>
-    <div style={{maxWidth:"80vw",marginLeft:"auto"}}>
+    <div style={{width:"80vw",marginLeft:"auto"}} className='grid'>
     <Grid container spacing={10}  columns={{sm:12 ,xs:12 ,md:12}}>
     <Grid item sm={4} md={6} xs={6} style={{alignItems:'center',display:'flex',gap:'40px'}}>
     <Avatar sx={{height:"60px",width:"60px"}}></Avatar>
@@ -158,8 +158,10 @@ const Pages = () => {
     </Grid>
     </Grid>
     </div>
-    <UserReview r1={movieData.r1} r2={movieData.r2} r3={movieData.r3} r4={movieData.r4} />
+    <UserReview r1={movieData.r1} r2={movieData.r2} r3={movieData.r3} r4={movieData.r4}/> 
+    <div className='slid'>
     <Slider1 data="More Like This" arr={popular}/>
+    </div>
     <Footer/>
     </div>
   )

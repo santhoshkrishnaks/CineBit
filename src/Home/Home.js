@@ -4,9 +4,7 @@ import Footer from "../Footer/Footer";
 import Loading from "../LoadingPage/Loading";
 import Create from "../Context/LoginContext";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
-import { CiPlay1 } from "react-icons/ci";
 import { sliderData } from '../Home/Slider-data'
-import Button from '@mui/material/Button'
 import Slider1 from "../Slider/Slider1";
 import { useNavigate } from "react-router-dom";
 const Home = () => {
@@ -81,28 +79,18 @@ const Home = () => {
               <p style={{fontSize:"18px",fontStyle:"revert-layer"}}>{slide.subDesc}</p>
               <p style={{fontSize:"18px",fontStyle:"revert-layer"}}>{slide.subDesc1}</p>
               <hr />
-              <Button variant="contained" className="button1" ><CiPlay1/>Watch Now</Button>
             </div>
           </div>
         )}
       </div>
     ))}
   </div>
-  <br></br>
-  <br></br>
-  <br></br>
-  <br></br>
-  <br></br>
-  <br></br>
-  <br></br>
-  <br></br>
-  <br></br>
-  <br></br>
-  <br></br>
+ <div className="con">
   <Slider1 data="Latest Movies" arr={latest}/>
   <Slider1 data="Top Movies" arr={top}/>
   <Slider1 data="Most Popular Movies" arr={popular}/>
   <Slider1 data="Kids Movies" arr={kids}/>
+  </div>
     <Footer/>
     </div>}
     </div>

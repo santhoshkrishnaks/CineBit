@@ -67,8 +67,7 @@ function FreeSolo() {
                 if (event.key === 'Enter') {
                   handleSearchClick();
                 }
-              }
-          
+              }          
             }}
           />
         )}
@@ -110,7 +109,7 @@ const NavBar = () => {
     { id:15,name: "V", src: "./Images/V.jpg" },
   ];
   const popular = [
-    { id:1,name: "Rudra", src: "./Images/rudra.jpg" },
+    { id:23,name: "Rudra", src: "./Images/rudra.jpg"},
     { id:2,name: "Martian", src: "./Images/martian.jpg" },
     { id:3,name: "Asuran", src: "./Images/Asuran.jpg" },
     { id:33,name: "TheGodFather", src: "./Images/thegodfather.jpg" },
@@ -133,7 +132,7 @@ const NavBar = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://apigenerator.dronahq.com/api/AgmE4vf7/data");
+        const response = await axios.get("https://apigenerator.dronahq.com/api/-jC3Qd5p/data");
         top100Films = response.data;
         console.log(">>>>>>>>>>>>>>>>", top100Films);
       } catch (error) {
@@ -280,8 +279,7 @@ const NavBar = () => {
           </Tabs>
           {login ? (
             <Avatar
-              sx={{ marginLeft: "15vw", cursor: "pointer" ,
-              '@media (max-width: 600px)': {  },}}
+              sx={{ marginLeft: "15vw", cursor: "pointer"}}
               onClick={handlea}
             />
           ) : (

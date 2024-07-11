@@ -10,7 +10,6 @@ import Pages from './Pages/Pages.js';
 import Create from './Context/LoginContext.js';
 import NavBar from './NavBar/NavBar.js';
 import List from './List/List.js';
-import Sample from './Sample/Sample.js';
 import ForgotPassword from './LoginForm/ForgotPassword.js';
 
 function App() {
@@ -21,7 +20,6 @@ function App() {
     <Create.Provider value={{login,setLogin,load,setLoad}}>
     <BrowserRouter>
     <Routes>
-    <Route path='/L' element={<Sample/>}/>
       <Route path='/SignUp' element={<SignUp/>}/>
       <Route path='/Login' element={<LoginForm/>}/>
       <Route path='/Forgot' element={<ForgotPassword/>}/>

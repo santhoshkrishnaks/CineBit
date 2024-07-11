@@ -21,36 +21,30 @@ const LoginForm = () => {
   const [but,setBut]=useState(false);
   const [open,setOpen]=useState(false);
   const handleClick = async (e) => {
+    let userFound = false;
     e.preventDefault();
     try {
       setBut(true);
-      const response = await axios.get("https://retoolapi.dev/Nxb05R/data");
-      let userFound = false;
-      for (let i = 1; i < response.data.length; i++) {
-        const e = response.data[i].username;
-        const p = response.data[i].password;
-        if (email === e) {
-          if(password === p){
-          userFound = true;
-          break;
-          }
-          else{
-            setOpen(true);
-            setPasswordError('Password Incorrect');
-          }
+      const response=await axios.get(`https://movie-db-api-mauve.vercel.app/user/name/${email}`);
+      console.log(response.data.password);
+      if(response.status===200){
+        if(password===response.data.password){
+          userFound=true;
         }
         else{
           setOpen(true);
-          setEmailError('Email Incorrect');
+          setPasswordError('Password Incorrect');
         }
       }
       setUser(userFound);
-    } 
+    }
     catch (error) {
+      setOpen(true);
+      setEmailError('User Not Found');
       console.log(error);
     }
     finally{
-      if(user){
+      if(userFound){
         navigate("/Home");
         setLogin(true);
         setBut(false);

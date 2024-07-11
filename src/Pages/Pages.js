@@ -112,7 +112,7 @@ const Pages = () => {
       </div>
       </div>
       </div>
-      <div >
+      <div className='trailer'>
       <h2 className='titlep'>Official Trailer</h2>
       <center><iframe width="55%" height="450" src={movieData.src} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></center>
 
@@ -124,7 +124,7 @@ const Pages = () => {
       <br/>
       <br/>
     <h2 className='titlep'>TOP CAST</h2>
-    <div style={{width:"80vw",marginLeft:"auto"}} className='grid'>
+    <div style={{width:"80vw"}} className='grid'>
     <Grid container spacing={10}  columns={{sm:12 ,xs:12 ,md:12}}>
     <Grid item sm={4} md={6} xs={6} style={{alignItems:'center',display:'flex',gap:'40px'}}>
     <Avatar sx={{height:"60px",width:"60px"}}></Avatar>

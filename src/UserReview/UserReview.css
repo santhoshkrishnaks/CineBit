@@ -160,7 +160,7 @@
   margin-left: 560px;
 }
 
-@media screen and (max-width: 100vh) {
+@media screen and (max-width: 1000px) {
   .comment-box {
     width: 90vw;
     margin-left: auto;

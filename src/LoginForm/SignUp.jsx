@@ -58,7 +58,7 @@ const SignUp = () => {
         }
         else{
             try{
-                    axios.post("https://retoolapi.dev/Nxb05R/data",{name:form.fname+form.lname,username:form.email,password:form.password});
+                    axios.post('https://movie-db-api-mauve.vercel.app/user',{user:form.email,password:form.password});
                     Navigate("/Login");
                 }
                 catch(error){

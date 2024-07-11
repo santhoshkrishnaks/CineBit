@@ -21,7 +21,7 @@ const ForgotPassword = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("https://retoolapi.dev/Nxb05R/data");
+                const response = await axios.get("https://movie-db-api-mauve.vercel.app/user");
                 if (response.data && response.data.length > 0) {
                     setUserList(response.data);
                 }
@@ -56,10 +56,10 @@ const ForgotPassword = () => {
             setConfirmPasswordError("Password and ConfirmPassword must be Same");
         } else {
             try {
-                const user = userList.find(task => task.username === email);
+                const user = userList.find(task => task.user === email);
                 console.log(user);
                 if (user) {
-                    await axios.patch(`https://retoolapi.dev/Nxb05R/data/${user.id}`, { password: password });
+                    await axios.put(`https://movie-db-api-mauve.vercel.app/user/name/${email}`, { password: password });
                     navigate("/Login");
                 } else {
                     setOpen(true);

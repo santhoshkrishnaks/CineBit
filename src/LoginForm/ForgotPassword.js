@@ -21,7 +21,7 @@ const ForgotPassword = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("https://movie-db-api-mauve.vercel.app/user");
+                const response = await axios.get("https://movie-db-api-mauve.vercel.app/user")
                 if (response.data && response.data.length > 0) {
                     setUserList(response.data);
                 }

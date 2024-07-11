@@ -14,15 +14,16 @@ import { useLocation } from 'react-router-dom';
 
 const Pages = () => {
   const location=useLocation();
-  const popular=[{id:9,src:"./Images/Avatar.jpg"},{id:10,src:'./Images/Avenger.jpg'},{id:2,src:'./Images/martian.jpg'},{id:1,src:'./Images/Ms.jpg'},{id:3,src:'./Images/Asuran.jpg'},{id:8,src:'./Images/Transform.jpg'},{id:11,src:'./Images/jaibhim.jpg'},{id:23,src:'./Images/rudra.jpg'},{id:33,src:'./Images/thegodfather.jpg'},{id:39,src:'./Images/i.jpg'},{id:31,src:'./Images/thedarkknight.jpg'},{id:21,src:'./Images/drishyam.jpg'},{id:26,src:'../Images/sooraripottru.jpg'},{id:15,src:'./Images/V.jpg'}];
+  const popular=[{id:"Avatar",src:"./Images/Avatar.jpg"},{id:"The Avengers",src:'./Images/Avenger.jpg'},{id:"The Martian",src:'./Images/martian.jpg'},{id:"M.S.Dhoni the untold story",src:'./Images/Ms.jpg'},{id:"Asuran",src:'./Images/Asuran.jpg'},{id:"Transformers",src:'./Images/Transform.jpg'},{id:"Jai Bhim",src:'./Images/jaibhim.jpg'},{id:"Rudra",src:'./Images/rudra.jpg'},{id:"The GodFather",src:'./Images/thegodfather.jpg'},{id:"I",src:'./Images/i.jpg'},{id:"The Dark knight",src:'./Images/thedarkknight.jpg'},{id:"Drishyam",src:'./Images/drishyam.jpg'},{id:"Soorarai Pottru",src:'../Images/sooraripottru.jpg'},{id:"V",src:'./Images/V.jpg'}];
 
   const id=location.state;
   const [movieData, setMovieData] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://apigenerator.dronahq.com/api/AgmE4vf7/data/${id}`);
+        const response = await axios.get(`https://movie-db-api-mauve.vercel.app/movie/name/${id}`);
         const data = response.data;
+        console.log(response.data)
         setMovieData(data);
         console.log("================",data);
       } catch (error) {
@@ -34,11 +35,11 @@ const Pages = () => {
   }, [id]);
   const {load,setLoad}=useContext(Create);
   useEffect(() => {
-    setLoad(true); // Simulate successful login
+    setLoad(true);
     setTimeout(() => {
       setLoad(false);
     }, 500);
-  }, [])
+  }, [movieData])
   const [open,setOpen]=useState(false);
   const [rating,setRating]=useState(3);
   const [ratingp,setRatingp]=useState(0);

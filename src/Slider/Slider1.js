@@ -7,7 +7,7 @@ const Slider = (props) => {
   const len= window.innerWidth;
   const [page,setPage]=useState(5);
   useEffect(() => {
-    if(len<=600){
+    if(len<=800){
       setPage(3);
     }
     else if(len<=1000){

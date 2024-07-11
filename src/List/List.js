@@ -35,10 +35,10 @@ const List = () => {
                     <div    id="most-popular-section">
                         <div    class="most-popular-items">
                             <div class="music-icon-section">
-                                <img src={value.src}  onClick={()=>{navigate("/Page",{state:value.src})}} alt="starboy"></img>
+                                <img src={value.src}  onClick={()=>{navigate("/Page",{state:value.id})}} alt="starboy"></img>
                                </div>
                                <div className='form'>
-                                <h3 id='run' onClick={()=>{navigate("/Page",{state:value.name})}}>{value.name}</h3>
+                                <h3 id='run' onClick={()=>{navigate("/Page",{state:value.id})}}>{value.id}</h3>
                                 <div className='form1'>
                                 <Star/></div>
                             </div>

@@ -31,14 +31,7 @@ function FreeSolo() {
 
   };
   const handleSearchClick = () => {
-    const searchedMovie = top100Films.find(movie => movie.name === searchValue);
-    if (searchedMovie) {
-      navigate("/Page",{state:searchedMovie.id});
-      window.location.reload(false);
-    } else {
-      console.log("Movie not found!");
-    }
-  };
+      navigate("/Page",{state:searchValue});  };
 
   const navigate=useNavigate();
   return (
@@ -86,39 +79,9 @@ const NavBar = () => {
     setAnchorElNav(null);
   };
 
-  const latest = [
-    { id:35,name: "12th Fail", src: "./Images/12thfail.jpg" },
-    { id:25,name: "Hi Nanna", src: "./Images/hinanna.jpg" },
-    { id:42,name: "Ponninselvan", src: "./Images/ponninselvan.jpg" },
-    { id:24,name: "Viduthalai", src: "./Images/viduthalai.jpg" },
-    { id:5,name: "Leo", src: "./Images/Leo.jpg" },
-    { id:34,name: "Jersy", src: "./Images/jersy.jpg" },
-    { id:36,name: "Madmax", src: "./Images/madmax.jpg" },
-    { id:28,name: "Good Night", src: "./Images/goodnight.jpg" },
-    { id:4,name: "Jailer", src: "./Images/Jailer.jpg" },
-  ];
-  const top = [
-    { id:1,name: "Dhoni", src: "./Images/Ms.jpg" },
-    { id:12,name: "Intersellar", src: "./Images/intersellar.jpg" },
-    { id:11,name: "JaiBhim", src: "./Images/jaibhim.jpg" },
-    { id:32,name: "Premam", src: "./Images/premam.jpg" },
-    { id:30,name: "96", src: "./Images/96.jpg" },
-    { id:6,name: "Thunivu", src: "./Images/Thunivu.jpg" },
-    { id:27,name: "Ip Man", src: "./Images/ipman.jpg" },
-    { id:8,name: "Transformer", src: "./Images/Transform.jpg" },
-    { id:15,name: "V", src: "./Images/V.jpg" },
-  ];
-  const popular = [
-    { id:23,name: "Rudra", src: "./Images/rudra.jpg"},
-    { id:2,name: "Martian", src: "./Images/martian.jpg" },
-    { id:3,name: "Asuran", src: "./Images/Asuran.jpg" },
-    { id:33,name: "TheGodFather", src: "./Images/thegodfather.jpg" },
-    { id:21,name: "Drishyam", src: "./Images/drishyam.jpg" },
-    { id:10,name: "Avenger", src: "./Images/Avenger.jpg" },
-    { id:39,name: "I", src: "./Images/i.jpg" },
-    { id:26,name: "SooraraiPottru", src: "../Images/sooraripottru.jpg" },
-    { id:9,name: "Avatar", src: "./Images/Avatar.jpg" },
-  ];
+  const latest=[{id:"12 th fail",src:"./Images/12thfail.jpg"},{id:"Hi Nanna",src:'./Images/hinanna.jpg'},{id:"Good Night",src:'./Images/goodnight.jpg'},{id:"LEO",src:'./Images/leo.jpg'},{id:"Ponniyin Selvan",src:'./Images/ponninselvan.jpg'},{id:"Jailer",src:'./Images/Jailer.jpg'},{id:"Viduthalai",src:'./Images/viduthalai.jpg'},{id:"Cadver",src:'./Images/cadver.jpg'},{id:"Jersy",src:'./Images/jersy.jpg'},{id:"Mad Max",src:'./Images/madmax.jpg'}];
+  const top=[{id:"Interstellar",src:"./Images/intersellar.jpg"},{id:"Ip Man",src:'./Images/ipman.jpg'},{id:"Jai Bhim",src:'./Images/jaibhim.jpg'},{id:"Premam",src:'./Images/premam.jpg'},{id:"96",src:'./Images/96.jpg'},{id:"Spider Man",src:'./Images/spiderman.jpg'},{id:"Batman Begins",src:'./Images/Bat.jpg'},{id:"Train to Busan",src:'./Images/trainto.jpg'},{id:"Pairets of the caribbean",src:'./Images/pairets.jpg'},{id:"Thunivu",src:'./Images/thunivu.jpg'},{id:"GeoStrom",src:'./Images/Geostrom.jpg'}];
+  const popular=[{id:"Avatar",src:"./Images/Avatar.jpg"},{id:"The Avengers",src:'./Images/Avenger.jpg'},{id:"The Martian",src:'./Images/martian.jpg'},{id:"M.S.Dhoni the untold story",src:'./Images/Ms.jpg'},{id:"Asuran",src:'./Images/Asuran.jpg'},{id:"Transformers",src:'./Images/Transform.jpg'},{id:"Jai Bhim",src:'./Images/jaibhim.jpg'},{id:"Rudra",src:'./Images/rudra.jpg'},{id:"The GodFather",src:'./Images/thegodfather.jpg'},{id:"I",src:'./Images/i.jpg'},{id:"The Dark knight",src:'./Images/thedarkknight.jpg'},{id:"Drishyam",src:'./Images/drishyam.jpg'},{id:"Soorarai Pottru",src:'../Images/sooraripottru.jpg'},{id:"V",src:'./Images/V.jpg'}];
   const navigate = useNavigate();
   const { login, setLogin } = useContext(Create);
   const [val, setVal] = useState(0);
@@ -132,7 +95,7 @@ const NavBar = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://apigenerator.dronahq.com/api/-jC3Qd5p/data");
+        const response = await axios.get("https://movie-db-api-mauve.vercel.app/movie");
         top100Films = response.data;
         console.log(">>>>>>>>>>>>>>>>", top100Films);
       } catch (error) {
